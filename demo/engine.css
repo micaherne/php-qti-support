@@ -1,0 +1,23 @@
+.qti_prompt {
+	display: block;
+	margin-bottom: 1em;
+}
+
+.qti_simpleChoice {
+	display: list-item;
+	list-style-type: none;
+}
+
+.qti_simpleChoice select {
+	width: 4em;
+	margin-right: 1em;
+}
+
+.qti_feedbackInline {
+	color: red;
+}
+
+.qti_hottext {
+	border-bottom: 1px dotted red;
+	margin-left: .5em;
+}
