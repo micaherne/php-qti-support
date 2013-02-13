@@ -90,6 +90,12 @@ body {
 		<div class="row show-grid">
 			<div class="span6">
 				<?php $controller->run(); ?>
+				
+				<?php if (count($controller->modalFeedbackItems) >  0) {
+				    foreach($controller->modalFeedbackItems as $item) {
+                        echo '<div class="qti_modalFeedback alert"><button class="close" data-dismiss="alert">×</button>' . $item . '</div>';
+                    }
+				}?>
 			</div>
 		</div>
 
@@ -103,7 +109,8 @@ body {
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="../vendor/twitter/bootstrap/docs/assets/js/jquery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+	<!-- <script src="../vendor/twitter/bootstrap/docs/assets/js/jquery.js"></script>-->
 	<script src="../vendor/twitter/bootstrap/docs/assets/js/bootstrap-transition.js"></script>
 	<script src="../vendor/twitter/bootstrap/docs/assets/js/bootstrap-alert.js"></script>
 	<script src="../vendor/twitter/bootstrap/docs/assets/js/bootstrap-modal.js"></script>
@@ -118,8 +125,9 @@ body {
 	<script src="../vendor/twitter/bootstrap/docs/assets/js/bootstrap-typeahead.js"></script>
 
 	<!-- PHP-QTI specific -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="../lib/qti.jquery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../vendor/micaherne/php-qti/src/qti.jquery.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
     	// Wire up interactions
