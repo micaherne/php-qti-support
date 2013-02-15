@@ -1,5 +1,7 @@
 <?php 
+
 require_once 'engine.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,16 +91,19 @@ body {
 
 		<div class="row show-grid">
 			<div class="span6">
-				<?php $controller->run(); ?>
-				<?php if (count($controller->modalFeedbackItems) >  0) {
+				<?php 
+				
+			    $controller->run(); 
+				if (count($controller->modalFeedbackItems) >  0) {
 				    foreach($controller->modalFeedbackItems as $item) {
                         echo '<div class="qti_modalFeedback alert"><button class="close" data-dismiss="alert">×</button>' . $item . '</div>';
                     }
-				}?>
-				<?php 
-                    $controller->showItemBody();
-                    $controller->displayVariables();
-                    $controller->displayDebugging();
+				}
+				
+                $controller->showItemBody();
+                $controller->displayVariables();
+                $controller->displayDebugging();
+                
                 ?>
 			</div>
 		</div>

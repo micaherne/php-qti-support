@@ -17,6 +17,7 @@ require_once 'config.php';
 use PHPQTI\Runtime\ResourceProvider;
 use PHPQTI\Runtime\Impl\SessionPersistence;
 use PHPQTI\Runtime\Impl\HttpResponseSource;
+use PHPQTI\Runtime\Exception\NotImplementedException;
 
 /**
  * Given a relative URL such as 'images/sign.png' will provide an absolute URL
@@ -90,7 +91,12 @@ $controller_file = "$datadir/{$package}/{$itemid}_controller.php";
 $controller_class = "{$itemid}_controller";
 
 require_once $controller_file;
-$controller = new $controller_class("{$package}/{$itemid}");
+
+try {
+    $controller = new $controller_class("{$package}/{$itemid}");
+} catch (NotImplementedException $e) {
+    die("Unable to run as this item contains an unimplemented element: " . $e->elementName);
+}
 $controller->setPersistence(new SessionPersistence());
 $controller->setResponseSource(new HttpResponseSource());
 $controller->setResourceProvider(new SimpleResourceProvider($_SERVER['SCRIPT_NAME'], $item));
