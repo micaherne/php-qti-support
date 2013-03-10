@@ -100,8 +100,8 @@ body {
 					            }
 					            if($dir2 = dir("$datadir/$direntry")) {
     					            while(false !== ($dir2entry = $dir2->read())) {
-    					                if (strpos($dir2entry, '_controller.php') !== false) {
-    					                    $id = $direntry . '/' . str_replace('_controller.php', '', $dir2entry); 
+    					                if (strpos($dir2entry, '.php') !== false) {
+    					                    $id = $direntry . '/' . str_replace('.php', '', $dir2entry); 
 					   ?>
 					   <tr>
 							<td><?php echo $id; ?></td>

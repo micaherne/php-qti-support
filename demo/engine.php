@@ -1,5 +1,9 @@
 <?php
 
+use PHPQTI\Runtime\AssessmentItemController;
+
+use PHPQTI\Util\ObjectFactory;
+
 /*
  * Engine is a front controller which:
  * 
@@ -87,13 +91,18 @@ if (isset($_GET['resource'])) {
     exit;
 }
 
-$controller_file = "$datadir/{$package}/{$itemid}_controller.php";
-$controller_class = "{$itemid}_controller";
+$item_file = "$datadir/{$package}/{$itemid}.php";
 
-require_once $controller_file;
+$item_class = "{$itemid}";
+
+require_once $item_file;
+
+$factory = new $item_class();
+$assessmentItem = $factory->getInstance();
+$controller = new AssessmentItemController($assessmentItem);
 
 try {
-    $controller = new $controller_class("{$package}/{$itemid}");
+    $controller = new AssessmentItemController($assessmentItem);
 } catch (NotImplementedException $e) {
     die("Unable to run as this item contains an unimplemented element: " . $e->elementName);
 }

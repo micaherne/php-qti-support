@@ -86,7 +86,7 @@ body {
 		</header>
 
 		<div class="page-header">
-			<h2><?php echo htmlspecialchars($controller->title) ?></h2>
+			<h2><?php echo htmlspecialchars($controller->getTitle()) ?></h2>
 		</div>
 
 		<div class="row show-grid">

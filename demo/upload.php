@@ -1,5 +1,9 @@
 <?php
 
+use PHPQTI\Util\ObjectFactoryCompiler;
+
+use PHPQTI\Util\XMLUtils;
+
 /*
  * Engine is a front controller which:
  * 
@@ -40,9 +44,9 @@ if($_FILES) {
                 $filename = $uploadedfileinfo['filename'];
                 $dom = new DOMDocument();
                 $dom->load($uploadedfileinfo['dirname'] . '/' . $uploadedfileinfo['basename']);
-                $gen = new ItemCompiler($dom);
-                $out = fopen($uploadedfileinfo['dirname'] . '/' . "{$filename}_controller.php", 'w');
-                fputs($out, $gen->generate_controller($filename));
+                $factory = new ObjectFactoryCompiler($dom);
+                $out = fopen($uploadedfileinfo['dirname'] . '/' . "{$filename}.php", 'w');
+                fputs($out, $factory->generate_factory($filename));
                 fclose($out);
                                 
                 header('Location: index.php');
