@@ -18,7 +18,8 @@
 	"require": {
 		"php": ">=5.3.0",
 		"micaherne/php-qti": "dev-master",
-		"twitter/bootstrap": "v2.3.0"
+		"twitter/bootstrap": "v2.3.0",
+		"twig/twig": "1.12.*@dev"
     },
     "autoload": {
         "psr-0": {

@@ -31,7 +31,8 @@ if($_FILES) {
     // foreach not really necessary but easier
     foreach($_FILES as $file) {
         $filepath = $basedir . '/' . $file['name'];
-        move_uploaded_file($file['tmp_name'], $filepath);
+        // use copy instead of move_uploaded_file as it breaks permissions on Windows
+        copy($file['tmp_name'], $filepath);
         $uploadedfileinfo = pathinfo($filepath);
         switch ($uploadedfileinfo['extension']) {
             case 'xml':
