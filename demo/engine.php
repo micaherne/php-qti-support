@@ -1,5 +1,7 @@
 <?php
 
+use PHPQTI\Runtime\Impl\LocalTemplateResolver;
+
 use PHPQTI\Runtime\AssessmentItemController;
 
 use PHPQTI\Util\ObjectFactory;
@@ -102,13 +104,14 @@ $assessmentItem = $factory->getInstance();
 $controller = new AssessmentItemController($assessmentItem);
 
 try {
-    $controller = new AssessmentItemController($assessmentItem);
+    $controller = new AssessmentItemController($assessmentItem, $itemid);
 } catch (NotImplementedException $e) {
     die("Unable to run as this item contains an unimplemented element: " . $e->elementName);
 }
 $controller->setPersistence(new SessionPersistence());
 $controller->setResponseSource(new HttpResponseSource());
 $controller->setResourceProvider(new SimpleResourceProvider($_SERVER['SCRIPT_NAME'], $item));
+$controller->setTemplateResolver(new LocalTemplateResolver(__DIR__ . '/../qtiv2p1/rptemplates'));
 
 $controller->show_debugging = true;
 
