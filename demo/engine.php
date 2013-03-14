@@ -1,5 +1,7 @@
 <?php
 
+use PHPQTI\Runtime\Impl\LocalTemplateResolver;
+
 use PHPQTI\Runtime\AssessmentItemController;
 
 use PHPQTI\Util\ObjectFactory;
@@ -109,6 +111,7 @@ try {
 $controller->setPersistence(new SessionPersistence());
 $controller->setResponseSource(new HttpResponseSource());
 $controller->setResourceProvider(new SimpleResourceProvider($_SERVER['SCRIPT_NAME'], $item));
+$controller->setTemplateResolver(new LocalTemplateResolver('../qtiv2p1/rptemplates'));
 
 $controller->show_debugging = true;
 
