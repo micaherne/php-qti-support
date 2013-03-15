@@ -82,7 +82,7 @@ body {
 		<header id="overview" class="jumbotron page-header">
 			<h1>PHP-QTI</h1>
 			<p class="lead">PHP-QTI is a PHP implementation of a QTI 2.1
-				rendering engine.</p>
+				engine.</p>
 		</header>
 
 		<div class="page-header">
