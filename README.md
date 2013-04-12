@@ -29,4 +29,4 @@ The demo app allows you to upload an item file (XML only, content packages are n
 The workflow is for demo purposes only and treats all items as adaptive, and shows all variable values.
 
 Each item is stored in its own folder within the data root (/demo by default), and any local images required
-can be copied into this folder
+can be copied into this folder. This folder must be writable by your web server process.
